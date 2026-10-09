@@ -1,0 +1,1 @@
+import{W as e,T as t,U as n}from"./index-DdabXQqd.js";import"./vue-BjffRY2d.js";import"./vant-Dv8ZLmZx.js";import"./echarts-whmNzLNz.js";class c extends e{async processImage(i){throw this.createUnimplementedException()}createUnimplementedException(){return new t("This method is not implemented on web.",n.Unimplemented)}}export{c as TextRecognitionWeb};
