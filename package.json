@@ -4,6 +4,25 @@
   "version": "1.0.0",
   "type": "module",
   "description": "计件工资记账 · 移动端 PWA（本地离线、无需登录）",
+  "license": "MIT",
+  "author": "wdre9",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wdre9/jijian-pwa.git"
+  },
+  "homepage": "https://wdre9.github.io/jijian-pwa/",
+  "keywords": [
+    "计件工资",
+    "工资记账",
+    "计件",
+    "记账",
+    "PWA",
+    "Vue3",
+    "Vite",
+    "IndexedDB",
+    "离线应用",
+    "移动端"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

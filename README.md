@@ -1,14 +1,3 @@
----
-AIGC:
-    Label: "1"
-    ContentProducer: 001191440300708461136T1XGW3
-    ProduceID: d5d87225b25c7ff9ce7972807796c3bd_8688c25ec3ac11f18019525400248c00
-    ReservedCode1: K+Y+cvVsNL0ZG+RYqVC4RC6KINAVRxs2zr6iBqZDT7pWIRzDYUpZhRzyxdZmhPNBsn5xz9jhblPXL2l39a6iTJhoEGPCGEi3cb5RJRlz3bLzX66KAl6z/epNRl+d0EHeZ8DXbDDRh93J4yn8rzO0h9E8Pq9LB70st9QI1+NiAwDnX/UFpSuqe4Y1mLk=
-    ContentPropagator: 001191440300708461136T1XGW3
-    PropagateID: d5d87225b25c7ff9ce7972807796c3bd_8688c25ec3ac11f18019525400248c00
-    ReservedCode2: K+Y+cvVsNL0ZG+RYqVC4RC6KINAVRxs2zr6iBqZDT7pWIRzDYUpZhRzyxdZmhPNBsn5xz9jhblPXL2l39a6iTJhoEGPCGEi3cb5RJRlz3bLzX66KAl6z/epNRl+d0EHeZ8DXbDDRh93J4yn8rzO0h9E8Pq9LB70st9QI1+NiAwDnX/UFpSuqe4Y1mLk=
----
-
 # 计件工资记账 · 移动端 PWA
 
 一个面向车间/工厂计件场景的**移动端记账 Web App（PWA）**：手机浏览器打开即可使用，
@@ -16,6 +5,30 @@ AIGC:
 
 > 产品定位：比「安心计件」更完善、上手更低 —— 快速记账、明细筛选、多维度统计图表、
 > 一键导出 Excel/CSV、本地备份与还原、深浅色主题。
+
+## 截图预览
+
+以下截图取自本项目实际运行界面。
+
+| 首页 | 快速记账 |
+| --- | --- |
+| <img src="docs/screenshots/home.png" width="260" alt="首页"> | <img src="docs/screenshots/quickadd.png" width="260" alt="快速记账"> |
+| 今日 / 本周 / 本月金额概览与最近记录 | 产品、工序、数量与自动带出的单价 |
+
+| 明细 | 统计 |
+| --- | --- |
+| <img src="docs/screenshots/records.png" width="260" alt="明细"> | <img src="docs/screenshots/stats.png" width="260" alt="统计"> |
+| 多条件筛选与批量导出 | 收入趋势、产品占比与收入排行 |
+
+| 产品与工序 | 数据与导出 |
+| --- | --- |
+| <img src="docs/screenshots/products.png" width="260" alt="产品与工序"> | <img src="docs/screenshots/data.png" width="260" alt="数据与导出"> |
+| 产品、工序与单价维护 | Excel / CSV / 备份 JSON 导入导出 |
+
+| 我的 |
+| --- |
+| <img src="docs/screenshots/settings.png" width="260" alt="我的"> |
+| 主题切换、默认工人与个人偏好 |
 
 ---
 
@@ -124,4 +137,27 @@ npm run preview      # 本地预览构建产物 http://localhost:4173
 - 更换设备、更换浏览器或清理浏览器数据会造成数据丢失，请定期
   「我的 → 数据与导出 → 导出备份」保存 `.json` 备份文件；
 - 备份文件包含全部记录、产品、工序、工人与设置，导入即可完整恢复。
-*（内容由AI生成，仅供参考）*
+
+## 七、贡献
+
+欢迎参与本项目。提交 Issue 或 Pull Request 之前，建议先阅读：
+
+- [贡献指南](CONTRIBUTING.md)：开发环境、分支与提交约定、Pull Request 流程
+- [行为准则](CODE_OF_CONDUCT.md)：社区交流的基本约定
+- [安全政策](SECURITY.md)：漏洞上报方式与处理时限
+
+问题反馈请使用 Issue 模板：https://github.com/wdre9/jijian-pwa/issues/new/choose
+代码变更请按 Pull Request 模板填写变更说明与验证方式。
+
+---
+
+## 八、许可证
+
+本项目基于 [MIT 许可证](LICENSE) 开源，版权归 wdre9 所有（2026）。
+
+---
+
+## 九、更新日志
+
+版本变更记录见 [CHANGELOG.md](CHANGELOG.md)。
+
