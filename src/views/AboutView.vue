@@ -104,7 +104,7 @@ import {
 } from '@/utils/install'
 
 const router = useRouter()
-const version = '1.0.0'
+const version = '1.2.0'
 
 async function onInstall() {
   const accepted = await promptInstall()
