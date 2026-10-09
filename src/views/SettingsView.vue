@@ -66,6 +66,12 @@
         <van-cell title="工人管理" is-link :value="`${store.workerOptions.length} 人`" @click="go('/workers')" />
         <van-cell title="数据与导出" is-link label="导出 Excel / 备份与还原" @click="go('/data')" />
         <van-cell title="关于" is-link label="版本信息与安装到桌面" @click="go('/about')" />
+        <van-cell
+          title="添加到手机主屏幕"
+          is-link
+          :label="installLabel"
+          @click="openInstallGuide"
+        />
       </van-cell-group>
 
       <div class="fs-12 text-3 mt-16" style="text-align: center; padding: 6px 0 10px">
@@ -76,14 +82,20 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, reactive, ref, watch } from 'vue'
+import { computed, onMounted, reactive, ref, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import type { ThemeMode } from '@/types'
 import { toNum } from '@/utils/format'
+import { env, openInstallGuide } from '@/utils/install'
 
 const store = useAppStore()
 const router = useRouter()
+
+/** 安装引导入口的说明文字：已安装时给出状态，否则显示当前浏览器 */
+const installLabel = computed(() =>
+  env.value.standalone ? '已添加到主屏幕' : `当前：${env.value.platformLabel} · ${env.value.browserLabel}`
+)
 
 const form = reactive({ defaultWorker: '' })
 const dailyGoalStr = ref('0')

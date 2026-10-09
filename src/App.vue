@@ -10,6 +10,7 @@
           <component :is="Component" />
         </router-view>
         <AppTabBar v-if="showTab" />
+        <InstallGuideSheet />
       </template>
     </div>
   </van-config-provider>
@@ -20,6 +21,8 @@ import { computed, onMounted, ref, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 import { useAppStore } from '@/stores/app'
 import AppTabBar from '@/components/AppTabBar.vue'
+import InstallGuideSheet from '@/components/InstallGuideSheet.vue'
+import { initInstall } from '@/utils/install'
 
 const store = useAppStore()
 const route = useRoute()
@@ -49,6 +52,7 @@ watchEffect(() => {
 })
 
 onMounted(() => {
+  initInstall()
   store.init()
 })
 </script>

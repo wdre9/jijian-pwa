@@ -44,6 +44,9 @@
     </header>
 
     <div class="page__inner">
+      <!-- ============ 安装引导与备份提醒（平台自适应） ============ -->
+      <InstallTipCard />
+
       <!-- ============ 时间范围 ============ -->
       <div class="mt-12">
         <RangeTabs v-model="range" :options="rangeOptions" />
@@ -161,6 +164,7 @@ import StatTile from '@/components/StatTile.vue'
 import RecordItem from '@/components/RecordItem.vue'
 import EmptyState from '@/components/EmptyState.vue'
 import QuickAddSheet from '@/components/QuickAddSheet.vue'
+import InstallTipCard from '@/components/InstallTipCard.vue'
 
 const store = useAppStore()
 const router = useRouter()

@@ -33,28 +33,25 @@
 
       <div class="card">
         <div class="card__head">
-          <div class="card__title">安装到手机桌面</div>
+          <div class="card__title">添加到主屏幕</div>
+          <van-tag v-if="env.standalone" round plain type="success">已独立窗口运行</van-tag>
         </div>
+        <div class="env">当前环境：{{ env.platformLabel }} · {{ env.browserLabel }}</div>
+        <div class="summary">{{ guide.summary }}</div>
         <div class="steps">
-          <div class="step">
-            <div class="step__no">安卓</div>
-            <div class="step__d">
-              用 Chrome / 夸克 / UC 打开本页 → 等页面加载完成 → 浏览器菜单（或底部弹出提示）选择
-              「添加到主屏幕 / 安装应用」。
-            </div>
+          <div v-for="(s, i) in guide.steps" :key="i" class="step">
+            <div class="step__no">{{ i + 1 }}</div>
+            <div class="step__d"><b>{{ s.title }}</b>：{{ s.desc }}</div>
           </div>
-          <div class="step">
-            <div class="step__no">iPhone</div>
-            <div class="step__d">
-              用 Safari 打开本页 → 点击底部分享按钮 → 选择「添加到主屏幕」→ 确认。
-            </div>
-          </div>
-          <div class="step">
-            <div class="step__no">说明</div>
-            <div class="step__d">
-              安装后图标会出现在桌面，点开即用全屏界面；不安装也可以直接用浏览器打开使用。
-            </div>
-          </div>
+        </div>
+        <div class="tips">
+          <div v-for="(t, i) in guide.tips" :key="i" class="tips__item">{{ t }}</div>
+        </div>
+        <div class="btns">
+          <van-button v-if="installPromptReady" type="primary" block round size="small" @click="onInstall">
+            立即安装
+          </van-button>
+          <van-button v-else plain block round size="small" @click="onCopy">复制应用网址</van-button>
         </div>
       </div>
 
@@ -97,9 +94,27 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { showToast } from 'vant'
+import {
+  copyCurrentUrl,
+  env,
+  guide,
+  installPromptReady,
+  promptInstall
+} from '@/utils/install'
 
 const router = useRouter()
 const version = '1.0.0'
+
+async function onInstall() {
+  const accepted = await promptInstall()
+  showToast(accepted ? '已开始安装' : '未完成安装，可按上方步骤手动添加')
+}
+
+async function onCopy() {
+  const ok = await copyCurrentUrl()
+  showToast(ok ? '网址已复制，粘贴到浏览器打开' : '复制失败，请手动复制地址栏网址')
+}
 
 const features = [
   { t: '快速记账', d: '选产品 → 选工序 → 填数量，单价自动带出，3 秒完成一笔记账' },
@@ -177,6 +192,36 @@ const features = [
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.env {
+  font-size: 12px;
+  color: var(--app-text-3);
+}
+
+.summary {
+  margin-top: 6px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--app-text-2);
+}
+
+.tips {
+  margin-top: 12px;
+  padding: 9px 10px;
+  border-radius: var(--app-radius-sm);
+  background: var(--app-card-2);
+}
+
+.tips__item {
+  font-size: 12px;
+  line-height: 1.65;
+  color: var(--app-text-3);
+  word-break: break-all;
+}
+
+.btns {
+  margin-top: 14px;
 }
 
 .step {

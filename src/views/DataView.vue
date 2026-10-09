@@ -97,6 +97,16 @@
         <div class="fs-12 text-3">
           备份文件包含全部记录、产品、工序、工人与设置，换手机时导入即可完整恢复。
         </div>
+        <div class="bak" :class="{ 'bak--warn': needBackupReminder }">
+          <div class="bak__t">{{ backupText ? '最近备份：' + backupText : '还没有导出过备份' }}</div>
+          <div class="bak__d">
+            数据只保存在本机浏览器，清理缓存或站点数据（含存储空间不足时的自动清理）可能一并清除且无法恢复；
+            建议每周导出一次，并保存到电脑或网盘。
+          </div>
+          <div class="bak__more" @click="openInstallGuide">
+            查看「添加到主屏幕」与数据备份说明 <van-icon name="arrow" size="11" />
+          </div>
+        </div>
         <div class="btns">
           <van-button plain block round size="small" @click="exportBackup">导出备份（.json）</van-button>
           <van-button plain block round size="small" @click="pickFile">导入备份（覆盖现有数据）</van-button>
@@ -148,6 +158,12 @@ import {
   sumQty
 } from '@/utils/stats'
 import { detailAoa, detailCsv, downloadJson, downloadText, exportWorkbook } from '@/utils/exporter'
+import {
+  backupStatusText,
+  markBackedUp,
+  needBackupReminder,
+  openInstallGuide
+} from '@/utils/install'
 
 const router = useRouter()
 const store = useAppStore()
@@ -160,6 +176,9 @@ const exportRanges: Array<{ label: string; value: ExportRange }> = [
   { label: '近 90 天', value: '90d' }
 ]
 const exportRange = ref<ExportRange>('all')
+
+/** 最近一次导出备份的时间描述（未备份时为空串） */
+const backupText = computed(() => backupStatusText())
 
 onMounted(() => {
   if (!store.ready) store.init()
@@ -285,6 +304,7 @@ function exportSummaryExcel() {
 async function exportBackup() {
   const pkg = await store.exportBackup()
   downloadJson(pkg, `计件记账备份_${fileStamp()}.json`)
+  markBackedUp()
   showToast('备份已导出')
 }
 
@@ -408,5 +428,41 @@ void moneyShort
 
 .hidden-file {
   display: none;
+}
+
+.bak {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: var(--app-radius-sm);
+  background: var(--app-card-2);
+  border: 1px solid var(--app-line);
+}
+
+.bak--warn {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.35);
+}
+
+.bak__t {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--app-text);
+}
+
+.bak--warn .bak__t {
+  color: #ef4444;
+}
+
+.bak__d {
+  margin-top: 4px;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--app-text-3);
+}
+
+.bak__more {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--app-primary);
 }
 </style>
