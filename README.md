@@ -1,5 +1,7 @@
 # 计件工资记账 · 移动端 PWA
 
+Looking for the English version? Click [here](README.en.md).
+
 一个面向车间/工厂计件场景的**移动端记账 Web App（PWA）**：手机浏览器打开即可使用，
 **无需安装、无需登录、数据全部保存在本机浏览器（IndexedDB）**，断网也能继续用。
 
