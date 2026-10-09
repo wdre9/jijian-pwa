@@ -6,9 +6,15 @@ A **mobile bookkeeping web app (PWA)** for piece-rate work in workshops and fact
 phone browser and it is ready to use. **No installation, no login, and all data is kept in the local
 browser (IndexedDB)** — it keeps working offline.
 
-> Positioning: more complete and easier to pick up than "Anxin Jijian" — quick entry, filterable
-> records, multi-dimensional charts and statistics, one-click Excel/CSV export, local backup and
-> restore, light and dark themes.
+> Scope: quick entry, filterable records, multi-dimensional charts and statistics, one-click
+> Excel/CSV export, local backup and restore, light and dark themes.
+>
+> **Name notice**: this project is an independently developed, open-source third-party tool and has
+> **no affiliation of any kind** with Shanghai Huixian Network Technology Co., Ltd. or its
+> "Anxin Jijian" product; there is no cooperation, licensing, corporate or other relationship between
+> them. The name "Anxin Jijian" is mentioned here only as a functional reference point alongside
+> similar mobile piece-rate bookkeeping tools, and implies no comparison or judgement about the
+> merits of either product.
 
 > **Before you start**: this app is a PWA. Once it is added to the home screen (installed on the
 > desktop), you get a standalone window, offline availability and a desktop launch icon — an
